@@ -5,13 +5,12 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
-  TextInput,
-  Button,
+  SwipeableListView,
+  // TextInput,
+  // Button,
 } from 'react-native';
-// import { Button } from "@react-native-material/core";
-// import {Dropdown} from 'react-native-material-dropdown';
 import DropDownPicker from 'react-native-dropdown-picker';
-// import { useEffect } from "react/cjs/react.production.min";
+import { Stack, TextInput, Button } from "@react-native-material/core";
 
 const ConverterView = () => {
   navigation = useNavigation();
@@ -134,57 +133,64 @@ const ConverterView = () => {
       selectedValue={justifyContent}
       values={['space-evenly']}
       setSelectedValue={setJustifyContent}>
-      <View style={[{flexDirection: 'row'}]}>
+      <View style={[{flexDirection: 'row', marginTop: 30,}]}>
         <TextInput
-          style={[{backgroundColor: 'white', width: 200}]}
+          style={[{backgroundColor: 'white', width: 190, marginHorizontal:8}]}
+          variant="outlined"
           onChangeText={newText => {
             setSwitching(false), setValue1(newText);
           }}
           value={value1}
-          placeholder="Enter value"
+          label="Enter value"
           keyboardType="numeric"
         />
 
         <DropDownPicker
-          style={{padding: 10, flex: 1, width: 150}}
+          style={{padding: 10, flex: 1, width: 140, marginHorizontal:8}}
           open={openImperialDropdown}
           value={firstUnit}
           items={firstUnits}
+          defaultValue={'inch'}
           setOpen={setOpenImperialDropdown}
           setValue={setFirstUnit}
           setItems={setFirstUnits}
           onSelectItem={convert}
         />
+
       </View>
-      <View style={[{backgroundColor: 'skyblue'}]}>
-        <Button
-          title="Switch"
+      <View style={[{ flexDirection: 'row', marginTop: 30}]}>
+        <Button style={[{marginLeft: 235}]}
+          title="SWITCH"
           onPress={() => setIsFromImperialToMetric(!isFromImperialToMetric)}
         />
+        
       </View>
-      <View style={[{flexDirection: 'row'}]}>
+      <View style={[{flexDirection: 'row', marginTop: 30,}]}>
         <TextInput
-          style={[{backgroundColor: 'white', width: 200}]}
+          style={[{backgroundColor: 'white', width: 190, marginHorizontal:8}]}
+          variant="outlined"
           value={value2}
-          placeholder="Result value"
+          label="Result value"
           keyboardType="numeric"
           editable={false}
         />
         <DropDownPicker
-          style={{padding: 10, flex: 1, width: 150}}
+          style={{padding: 10, flex: 1, width: 140, marginHorizontal:8}}
           open={openMetricDropdown}
           value={secondUnit}
           items={secondUnits}
+          defaultValue={'mm'}
           setOpen={setOpenMetricDropdown}
           setValue={setSecondUnit}
           setItems={setSecondUnits}
           onSelectItem={convert}
+          
         />
       </View>
 
-      <View>
-        <Button
-          title="History"
+      <View style={[{flexDirection: 'row', marginTop: 70}]}>
+        <Button style={[{marginHorizontal: 100}]}
+          title="SHOW HISTORY"
           onPress={() =>
             navigation.navigate('HistoryView', {
               conversionHistory: conversionHistory,
@@ -192,6 +198,7 @@ const ConverterView = () => {
           }
         />
       </View>
+
     </Layout>
   );
 };
@@ -208,8 +215,8 @@ const Layout = ({label, children, values, selectedValue, setSelectedValue}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 8,
+    // flex: 1,
+    marginTop: 70,
   },
   box: {
     width: 100,
@@ -218,12 +225,13 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginTop: 30,
   },
   button: {
     paddingHorizontal: 8,
     paddingVertical: 6,
     borderRadius: 4,
-    backgroundColor: 'oldlace',
+    // backgroundColor: 'oldlace',
     alignSelf: 'flex-start',
     marginHorizontal: '1%',
     marginBottom: 6,

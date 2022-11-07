@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     height: 44,
     width: 300,
+    color: 'black',
   },
   card: {
     backgroundColor: 'white',
