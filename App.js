@@ -7,13 +7,13 @@
  */
 
 import React from 'react';
-import { Node } from 'react';
+import {Node} from 'react';
 import ConverterView from './src/converterView';
 import HistoryView from './src/historyView';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +38,7 @@ import {
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
-const Section = ({ children, title }) => {
+const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -75,8 +75,34 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ConverterView" component={ConverterView} />
-        <Stack.Screen name="HistoryView" component={HistoryView} />
+        <Stack.Screen
+          name="ConverterView"
+          component={ConverterView}
+          options={{
+            title: 'Converter',
+            headerStyle: {
+              backgroundColor: '#673AB7',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="HistoryView"
+          component={HistoryView}
+          options={{
+            title: 'History',
+            headerStyle: {
+              backgroundColor: '#673AB7',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

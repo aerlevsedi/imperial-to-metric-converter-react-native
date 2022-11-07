@@ -10,7 +10,7 @@ import {
   // Button,
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Stack, TextInput, Button } from "@react-native-material/core";
+import {Stack, TextInput, Button} from '@react-native-material/core';
 
 const ConverterView = () => {
   navigation = useNavigation();
@@ -133,9 +133,9 @@ const ConverterView = () => {
       selectedValue={justifyContent}
       values={['space-evenly']}
       setSelectedValue={setJustifyContent}>
-      <View style={[{flexDirection: 'row', marginTop: 30,}]}>
+      <View style={[{flexDirection: 'row', marginTop: 30}]}>
         <TextInput
-          style={[{backgroundColor: 'white', width: 190, marginHorizontal:8}]}
+          style={[{backgroundColor: 'white', width: 170, marginHorizontal: 8}]}
           variant="outlined"
           onChangeText={newText => {
             setSwitching(false), setValue1(newText);
@@ -146,7 +146,17 @@ const ConverterView = () => {
         />
 
         <DropDownPicker
-          style={{padding: 10, flex: 1, width: 140, marginHorizontal:8}}
+          style={{
+            padding: 10,
+            flex: 1,
+            width: 140,
+            marginHorizontal: 8,
+          }}
+          dropDownContainerStyle={{
+            padding: 10,
+            width: 140,
+            marginHorizontal: 8,
+          }}
           open={openImperialDropdown}
           value={firstUnit}
           items={firstUnits}
@@ -155,19 +165,19 @@ const ConverterView = () => {
           setValue={setFirstUnit}
           setItems={setFirstUnits}
           onSelectItem={convert}
+          zIndex={30}
         />
-
       </View>
-      <View style={[{ flexDirection: 'row', marginTop: 30}]}>
-        <Button style={[{marginLeft: 235}]}
+      <View style={[{flexDirection: 'row', marginTop: 30}]}>
+        <Button
+          style={[{marginLeft: 235, backgroundColor: '#673AB7'}]}
           title="SWITCH"
           onPress={() => setIsFromImperialToMetric(!isFromImperialToMetric)}
         />
-        
       </View>
-      <View style={[{flexDirection: 'row', marginTop: 30,}]}>
+      <View style={[{flexDirection: 'row', marginTop: 30}]}>
         <TextInput
-          style={[{backgroundColor: 'white', width: 190, marginHorizontal:8}]}
+          style={[{backgroundColor: 'white', width: 170, marginHorizontal: 8}]}
           variant="outlined"
           value={value2}
           label="Result value"
@@ -175,7 +185,17 @@ const ConverterView = () => {
           editable={false}
         />
         <DropDownPicker
-          style={{padding: 10, flex: 1, width: 140, marginHorizontal:8}}
+          style={{
+            padding: 10,
+            flex: 1,
+            width: 140,
+            marginHorizontal: 8,
+          }}
+          dropDownContainerStyle={{
+            padding: 10,
+            width: 140,
+            marginHorizontal: 8,
+          }}
           open={openMetricDropdown}
           value={secondUnit}
           items={secondUnits}
@@ -184,12 +204,15 @@ const ConverterView = () => {
           setValue={setSecondUnit}
           setItems={setSecondUnits}
           onSelectItem={convert}
-          
+          zIndex={20}
         />
       </View>
 
       <View style={[{flexDirection: 'row', marginTop: 70}]}>
-        <Button style={[{marginHorizontal: 100}]}
+        <Button
+          style={[
+            {marginHorizontal: 100, width: 150, backgroundColor: '#673AB7'},
+          ]}
           title="SHOW HISTORY"
           onPress={() =>
             navigation.navigate('HistoryView', {
@@ -198,7 +221,6 @@ const ConverterView = () => {
           }
         />
       </View>
-
     </Layout>
   );
 };

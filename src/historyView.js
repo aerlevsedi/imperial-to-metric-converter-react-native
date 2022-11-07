@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   item: {
     padding: 10,
     fontSize: 12,
-    height: 44,
+    height: 34,
     width: 300,
     color: 'black',
   },
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: '100%',
-    marginVertical: 5,
+    marginVertical: 2,
   },
 });
 
